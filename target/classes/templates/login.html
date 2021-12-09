@@ -13,56 +13,62 @@
 <body>
 
 <nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <h2>Expedia</h2>
+
+    <div class="d-flex flex-row">
+        <div class="p-2"><img src="https://images.squarespace-cdn.com/content/v1/57bb587c3e00be6b4cd50767/1545916486840-OT5D53PNL39K5TXDFY4V/expedia-icon.png" height="40" alt="logo" />
+        </div>
+        <div class="p-2"><h2>Expedia</h2></div>
+
     </div>
+
+
+
 </nav>
-<div class="container my-5">
-    <h3>Sign In</h3>
-    <div class="card">
-        <div class="card-body">
-            <div class="col-md-10">
 
-                <div class="row">
+<section class="vh-100 bg-image">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h4 class=" text-center mb-5">Sign In </h4>
+                            <form th:action="@{/login}" method="POST" class="form-signin">
 
-                    <div class="form-group col-md-8">
-                        <form th:action="@{/login}" method="POST" class="form-signin">
-                            <h3 class="form-signin-heading" th:text="Welcome"></h3>
-                            <br/>
-                            <div class="form-group col-md-8">
-                                <input type="text" id="email" name="email" placeholder="Email"
-                                       class="form-control"/> <br/>
+                                <br/>
+                                <div class="form-group">
+                                    <input type="text" id="email" name="email" placeholder="Email" class="form-control form-control-lg"/>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="password" th:placeholder="Password"  placeholder="Password" id="password" name="password" class="form-control form-control-lg"/>
+                                </div>
+
+                                <div  th:if="${param.error}">
+                                    <p >User Name or Password invalid, please try again</p>
+                                </div>
+                                <div class="form-group" style="align-items: center">
+                                    <button class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body" name="Submit" value="Login" type="Submit"
+                                            th:text="Login">Login</button>
+
+                                </div>
+                            </form>
+                            <div class="form-group">
+
+
+
+                                <form th:action="@{/registration}" method="get">
+                                    <p class="text-center text-muted mt-5 mb-0">New User?</p>
+                                    <button class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body" type="Submit">Sign Up</button>
+                                </form>
                             </div>
-                            <div class="form-group col-md-8">
-                                <input type="password" th:placeholder="Password"
-                                       id="password" name="password" class="form-control"/> <br/>
-                            </div>
-                            <div align="center" th:if="${param.error}">
-                                <p >Email or Password invalid, please
-                                    verify</p>
-                            </div>
-                            <div class="form-group col-md-8">
-                                <button class="btn btn-primary" name="Submit" value="Login"
-                                        type="Submit"
-                                        th:text="Login"></button>
-                                <input type="reset" class="btn btn-primary" value=" Reset ">
-                            </div>
-                        </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <div class="card">
-        <div class="card-body">
-            <form th:action="@{/registration}" method="get">
-                <h4>New User</h4>
-                <button class="btn btn-primary" type="Submit">Sign Up</button>
-            </form>
-        </div>
-    </div>
-
-</div>
 </body>
 </html>

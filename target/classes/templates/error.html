@@ -5,20 +5,32 @@
     <title>Expedia Login Error</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-<form th:action="@{/login}" method="get">
-    <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Login Page</button>
-</form>
+<nav class="navbar navbar-light bg-light">
 
-<div class="container">
-        <h1>Error occurred</h1>
-        <p>
-            Sorry An error has occurred.
-        </p>
+    <div class="d-flex flex-row">
+        <div class="p-2"><img
+                src="https://images.squarespace-cdn.com/content/v1/57bb587c3e00be6b4cd50767/1545916486840-OT5D53PNL39K5TXDFY4V/expedia-icon.png"
+                height="40" alt="logo"/>
+        </div>
+        <div class="p-2"><h2>Expedia</h2></div>
+
+    </div>
+
+
+</nav>
+<div class="card">
+    <div class="card-body">
+        <form th:action="@{/}" method="get">
+            <h4> Sorry An error has occurred.</h4>
+            <button class="btn btn-primary" type="Submit">Login again</button>
+        </form>
+    </div>
 </div>
+
+
 
 </body>
 </html>
