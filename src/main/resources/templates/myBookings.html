@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title> Expedia Search</title>
+    <style>
+        .footer {
+            position:fixed;
+            bottom:0;
+            width:100%;
+            height:55px;
+            background: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-light">
+    <div class="d-flex">
+        <div class="p-2"><img src="https://images.squarespace-cdn.com/content/v1/57bb587c3e00be6b4cd50767/1545916486840-OT5D53PNL39K5TXDFY4V/expedia-icon.png" height="40" alt="logo" />
+        </div>
+        <div class="p-2"><h2>Expedia</h2></div>
+    </div>
+    <h5 style="text-align: center"><span th:utext="${username}"></span></h5>
+    <form th:action="@{/logout}" method="get">
+        <button  class="btn btn-primary " name="registration" type="Submit">Logout</button>
+    </form>
+</nav>
+<center>
+<h2>My Bookings</h2>
+
+<div class="align-items-center">
+    <div th:each="i,state:${userdetails}">
+
+        <div class="card text-center bg-light mb-3" style="max-width: 25rem;">
+            <div class="card-header">PNR NO :  <div style="display:inline";  th:text="${i.getPnr()}"></div></div>
+            <div class="card-body">
+                Passenger Name :<div style="display:inline"; th:text="${i.getFirstName()}"></div>
+                <div style="display:inline"; th:text="${i.getLastName()}"></div><br>
+                Passport Number : <div  style="display:inline"; th:text="${i.getPassportNumber()}"></div><br>
+                Airline : <div  style="display:inline"; th:text="${i.getAirlines()}"></div><br>
+                Departure Airport : <div  style="display:inline"; th:text="${i.getDeparture_airport_code()}"></div><br>
+                Arrival Airport : <div  style="display:inline"; th:text="${i.getArrival_airport_code()}"></div><br>
+                Departure Time : <div  style="display:inline"; th:text="${i.getDeparture_time()}"></div><br>
+                Arrival Time : <div  style="display:inline"; th:text="${i.getArrival_time()}"></div><br>
+                Departure Date : <div  style="display:inline"; th:text="${i.getDeparture_date()}"></div><br>
+                Arrival Date : <div  style="display:inline"; th:text="${i.getArrival_date()}"></div><br>
+                Cabin Class :<div  style="display:inline"; th:text="${i.getCabin_class()}"></div><br>
+            </div>
+        </div>
+
+    </div>
+</div>
+</center>
+<footer class="footer" style="text-align: center">
+    <div class=" text-muted" > <small>Expedia, Inc. is not responsible for content on external Web sites.
+        &copy; 2021 Expedia, Inc, an Expedia Group company. All rights reserved. <br>Expedia and the Airplane Logo are trademarks or registered trademarks of Expedia, Inc.
+    </small>
+    </div>
+</footer>
+
+</body>
+</html>
+
+
+

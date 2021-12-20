@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .footer {
+            position:fixed;
+            bottom:0;
+            width:100%;
+            height:55px;
+            background: #f2f2f2;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,12 +24,13 @@
 <nav class="navbar navbar-light bg-light">
 
     <div class="d-flex flex-row">
-        <div class="p-2"><img src="https://images.squarespace-cdn.com/content/v1/57bb587c3e00be6b4cd50767/1545916486840-OT5D53PNL39K5TXDFY4V/expedia-icon.png" height="40" alt="logo" />
+        <div class="p-2"><img
+                src="https://images.squarespace-cdn.com/content/v1/57bb587c3e00be6b4cd50767/1545916486840-OT5D53PNL39K5TXDFY4V/expedia-icon.png"
+                height="40" alt="logo"/>
         </div>
         <div class="p-2"><h2>Expedia</h2></div>
 
     </div>
-
 
 
 </nav>
@@ -37,28 +47,34 @@
 
                                 <br/>
                                 <div class="form-group">
-                                    <input type="text" id="email" name="email" placeholder="Email" class="form-control form-control-lg"/>
+                                    <input type="text" id="email" name="email" placeholder="Email"
+                                           class="form-control form-control-lg"/>
                                 </div>
                                 <div class="form-group ">
-                                    <input type="password" th:placeholder="Password"  placeholder="Password" id="password" name="password" class="form-control form-control-lg"/>
+                                    <input type="password" th:placeholder="Password" placeholder="Password"
+                                           id="password" name="password" class="form-control form-control-lg"/>
                                 </div>
 
-                                <div  th:if="${param.error}">
-                                    <p >User Name or Password invalid, please try again</p>
+
+                                <div th:if="${param.error}">
+                                    <p>User Name or Password invalid, please try again</p>
                                 </div>
                                 <div class="form-group" style="align-items: center">
-                                    <button class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body" name="Submit" value="Login" type="Submit"
-                                            th:text="Login">Login</button>
+                                    <button class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body"
+                                            name="Submit" value="Login" type="Submit"
+                                            th:text="Login">Login
+                                    </button>
 
                                 </div>
                             </form>
                             <div class="form-group">
 
 
-
                                 <form th:action="@{/registration}" method="get">
                                     <p class="text-center text-muted mt-5 mb-0">New User?</p>
-                                    <button class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body" type="Submit">Sign Up</button>
+                                    <button class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body"
+                                            type="Submit">Sign Up
+                                    </button>
                                 </form>
                             </div>
 
@@ -69,6 +85,11 @@
         </div>
     </div>
 </section>
-
+<footer class="footer" style="text-align: center">
+    <div class=" text-muted" > <small>Expedia, Inc. is not responsible for content on external Web sites.
+        &copy; 2021 Expedia, Inc, an Expedia Group company. All rights reserved. <br>Expedia and the Airplane Logo are trademarks or registered trademarks of Expedia, Inc.
+    </small>
+    </div>
+</footer>
 </body>
 </html>

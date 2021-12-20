@@ -5,22 +5,26 @@
     <title>Expedia Registration</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
-
+    <style>
+        .footer {
+            position:fixed;
+            bottom:0;
+            width:100%;
+            height:55px;
+            background: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
 
 
 <nav class="navbar navbar-light bg-light">
-
     <div class="d-flex flex-row">
         <div class="p-2"><img src="https://images.squarespace-cdn.com/content/v1/57bb587c3e00be6b4cd50767/1545916486840-OT5D53PNL39K5TXDFY4V/expedia-icon.png" height="40" alt="logo" />
         </div>
         <div class="p-2"><h2>Expedia</h2></div>
-
     </div>
 </nav>
-
 <section class="vh-100 bg-image">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
         <div class="container h-100">
@@ -32,30 +36,24 @@
                             <form autocomplete="off" action="#" th:action="@{/registration}"
                                   th:object="${user}" method="post" class="form-horizontal"
                                   role="form">
-
                                 <div class="form-group">
                                     <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
                                            class="validation-message"></label>
                                     <input type="text" th:field="*{name}" placeholder="First Name"
                                            class="form-control form-control-lg"/>
                                 </div>
-
-
                                 <div class="form-group">
                                     <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
                                            class="validation-message"></label>
                                     <input type="text" th:field="*{lastName}"
                                            placeholder="Last Name" class="form-control form-control-lg"/>
                                 </div>
-
                                 <div class="form-group">
                                     <input type="text" th:field="*{email}" placeholder="Email"
                                            class="form-control form-control-lg"/> <label
                                         th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
                                         class="validation-message "></label>
                                 </div>
-
-
                                 <div class="form-group">
                                     <input type="password" th:field="*{password}"
                                            placeholder="Password" class="form-control form-control-lg"/> <label
@@ -63,18 +61,15 @@
                                         class="validation-message"></label>
                                 </div>
                                 <div class="form-group">
-                                    <p class="text-center text-muted mt-5 mb-0"><small>By creating an account, I agree to the Expedia Terms and Conditions, Privacy Statement and Expedia Rewards Terms and Conditions.</small></p>
+                                    <p class="text-center text-muted mt-5 mb-0">By creating an account, I agree to the Expedia Terms and Conditions, Privacy Statement and Expedia Rewards Terms and Conditions.</p>
                                     <button type="submit" class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">Register</button>
                                 </div>
                                 <h4><span class="text-success" th:utext="${successMessage}"></span></h4>
                             </form>
-
-
-                            <form th:action="@{/}" method="get">
-                                <p class="text-center text-muted mt-5 mb-0">Have already an account?</p>
-                                <button class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body" type="Submit">Login</button>
-                            </form>
-
+                                <form th:action="@{/}" method="get">
+                                    <p class="text-center text-muted mt-5 mb-0">Have already an account?</p>
+                                    <button class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body" type="Submit">Login</button>
+                                </form>
                         </div>
                     </div>
                 </div>
@@ -82,5 +77,12 @@
         </div>
     </div>
 </section>
+<footer class="footer" style="text-align: center">
+    <div class=" text-muted" > <small>Expedia, Inc. is not responsible for content on external Web sites.
+        &copy; 2021 Expedia, Inc, an Expedia Group company. All rights reserved. <br>Expedia and the Airplane Logo are trademarks or registered trademarks of Expedia, Inc.
+    </small>
+    </div>
+</footer>
+
 </body>
 </html>

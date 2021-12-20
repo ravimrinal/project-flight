@@ -22,14 +22,29 @@
         </div>
         <div class="p-2"><h2>Expedia</h2></div>
     </div>
+    <h5 style="text-align: center"><span th:utext="${username}"></span></h5>
+    <div style="float: right">
 
+        <form style="display: inline" th:action="@{/logout}" method="get">
+            <button  class="btn btn-primary " name="registration" type="Submit">Logout</button>
+        </form>
+    </div>
 </nav>
-<div style="text-align: center">
-<h4>Sorry, Service is Temporarily Unavailable<br> Please Try Later</h4><br>
-    <form th:action="@{/}" method="get">
-        <button class="btn btn-primary " type="Submit">Back to Login</button>
-    </form>
+<center>
+<h3> </h3>
+
+
+<div class="card" style="width: 25rem;">
+    <img src="https://previews.123rf.com/images/olegtoka/olegtoka2003/olegtoka200300056/143592409-cartoon-travel-and-journey-concept-icon.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title"> Your Booking is Successful</h5>
+        <form style="display: inline" th:action="@{/flights/myBookings}" method="get">
+            <button  class="btn btn-primary " name="myBookings" type="Submit">View My Bookings</button>
+        </form>
+    </div>
 </div>
+
+</center>
 
 <footer class="footer" style="text-align: center">
     <div class=" text-muted" > <small>Expedia, Inc. is not responsible for content on external Web sites.
@@ -38,10 +53,5 @@
     </div>
 </footer>
 
-
-
 </body>
 </html>
-
-
-

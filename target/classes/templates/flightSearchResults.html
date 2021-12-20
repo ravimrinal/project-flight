@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+  <title> Expedia Search</title>
+<style>
+  .footer {
+    position:fixed;
+    bottom:0;
+    width:100%;
+    height:55px;
+    background: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-light bg-light">
+  <div class="d-flex">
+    <div class="p-2"><img src="https://images.squarespace-cdn.com/content/v1/57bb587c3e00be6b4cd50767/1545916486840-OT5D53PNL39K5TXDFY4V/expedia-icon.png" height="40" alt="logo" />
+    </div>
+    <div class="p-2"><h2>Expedia</h2></div>
+  </div>
+  <h5 style="text-align: center"><span th:utext="${username}"></span></h5>
+  <div style="float: right">
+  <form style="display: inline" th:action="@{/flights/myBookings}" method="get">
+    <button  class="btn btn-primary " name="myBookings" type="Submit">View My Bookings</button>
+  </form>
+  <form style="display: inline" th:action="@{/logout}" method="get">
+    <button  class="btn btn-primary " name="registration" type="Submit">Logout</button>
+  </form>
+  </div>
+</nav>
+
+
+
+
+
+
+<div class="container" style="margin-bottom:30px">
+  <div class="row" style="text-align: center">
+
+    <div class="card">
+      <div class="card-body">
+        <form th:action="@{/flights/search}" th:object="${searchFlightResults}" method="post" class="form-inline">
+          <div class="row">
+
+            <div class="form-group">
+              <label for="departure" class="control-label">&nbsp; Departure &nbsp;</label>
+
+              <input type="text" class="form-control" id="departure" placeholder="From"
+                     name="departure" required>
+            </div>
+
+            <div class="form-group">
+              <label for="arrival" class="control-label">&nbsp; Arrival &nbsp;</label>
+              <input type="text" class="form-control" id="arrival" placeholder="To" name="arrival"
+                     required>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label" for="departureDate">&nbsp; Departing &nbsp;</label>
+              <input type="date" class="form-control" placeholder="Departing Date" id="departureDate"
+                     name="departureDate" required>
+            </div>
+            <br><br>
+            <div>
+              <div class="form-group col-12">
+                <button type="submit" class="btn btn-primary" style="float: right">Search</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+  </div>
+  <br>
+  <div class="row">
+    <th:block th:if="${notFound !=null}">
+      <div class="col-12">
+        <p style="text-align: center; margin-top: 30px;font-weight: bold">No Flights Available for above search !</p>
+      </div>
+    </th:block>
+    <th:block th:if="${searchFlightResults !=null}">
+      <div class="row" style="margin-bottom: 10px">
+        <div class="center-block">
+          <h4 style="text-align: center">Search Results</h4>
+        </div>
+      </div>
+    </th:block>
+  </div>
+
+  <div th:each="flights,state:${searchFlightResults}">
+
+
+    <a style="text-decoration: none" th:href="@{/flights/bookFlights(airline=${flights.getAirlines()},
+                                           origin=${flights.getDeparture_airport_code()},
+                                           destination=${flights.getArrival_airport_code()},
+                                           departDate=${flights.getDeparture_date()},
+                                           departTime=${flights.getDeparture_time()},
+                                           arrDate=${flights.getArrival_date()},
+                                           arrTime=${flights.getArrival_time()},
+                                           tripLength=${flights.getTrip_duration()},
+                                           type=${flights.getCabin_class()},
+                                           amount=${flights.getPrice()})}">
+    <div class="card bg-light mb-3" >
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="https://pilotstories.net/wp-content/uploads/2017/11/IMG_0774-01-01.jpeg" class="w-50">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+
+
+            <h5 class="card-title">
+              <h5 th:text="${flights.getAirlines()}" ></h5>
+            </h5>
+            <p class="card-text" style="display:inline";>
+              Departure - Arrival<br>
+            <div style="display:inline"; th:text="${flights.getDeparture_airport_code()}"></div> -
+            <div style="display:inline"; th:text="${flights.getArrival_airport_code()}"></div><br>
+            Departure time - Arrival time<br>
+            <div style="display:inline"; th:text="${flights.getDeparture_time()}"></div> -
+            <div style="display:inline"; th:text="${flights.getArrival_time()}"></div><br>
+            Cabin Class :  <div style="display:inline"; th:text="${flights.getCabin_class()}"></div><br>
+            Duration : <div style="display:inline"; th:text="${flights.getTrip_duration()}"></div><br>
+            Fare : <div style="display:inline";  th:text="${flights.getPrice()}"></div>
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </a>
+  </div>
+
+</div>
+
+<footer class="footer" style="text-align: center">
+  <div class=" text-muted" > <small>Expedia, Inc. is not responsible for content on external Web sites.
+    &copy; 2021 Expedia, Inc, an Expedia Group company. All rights reserved. <br>Expedia and the Airplane Logo are trademarks or registered trademarks of Expedia, Inc.
+  </small>
+  </div>
+</footer>
+
+</body>
+</html>
+
